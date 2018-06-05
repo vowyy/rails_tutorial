@@ -1,0 +1,13 @@
+Hi <%= @user.name %>,
+
+Welcome to the Sample App! Click on the link below to activate your account:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+<!-- http://railstutorial@final.com/account_activations/h43idhb73hsdyfsd87sfky/edit?email=example%40exampl.com -->
+
+<!-- edit_account_activation_pathだた/から始まる相対pathになってしまうので今回urlで書く -->
+
+<!-- email: @user.email で@マークをよしなにエスケープしてくれる。 -->
+<!-- CGI.escape('example@exmaple.com')
+=> "exampl%example.com" -->

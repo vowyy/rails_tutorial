@@ -1,0 +1,18 @@
+<!-- このフォームはfollowed_idをコントローラに送信する必要があります -->
+
+<!-- POST /relationshipsに送っている。 -->
+<%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+<!-- buildしているのでfollower_idにはすでに自分のidが挟まっている。 -->
+<!-- コントローラーでインスタンス化しない。のでnewアクションいらない。 -->
+  <div><%= hidden_field_tag :followed_id, @user.id %></div>
+  <!-- params[:followed_id]のような形で取れる(送るURLにはidを含められないため。) -->
+  <!-- showアクションに定義されている@userのこと -->
+  <!-- ユーザーに入力してもらうまでもなくfollowed_idは手に入るのでhiddenで渡す。 -->
+  <!-- user GET  /users/:id(.:format) users#show -->
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>
+
+<!-- Ajaxでやる事
+① DBの更新。
+② 統計情報の更新
+③ follow/unfollowボタンの更新 -->

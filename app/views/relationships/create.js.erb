@@ -1,0 +1,12 @@
+// ③ follow/unfollowボタンの更新
+$("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
+
+// ② 統計情報の更新
+$("#followers").html('<%= @user.followers.count %>');
+
+
+
+// Ajaxでやる事
+// ① DBの更新。
+// ② 統計情報の更新
+// ③ follow/unfollowボタンの更新

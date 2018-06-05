@@ -1,0 +1,17 @@
+<!-- @user      |f| => f.object = @user
+     @micropost |f| => f.object = @micropost -->
+<!-- 今までは@user.errors.any? だったが@micropostでも査定したいのでobjectにする。 -->
+
+<% if object.errors.any? %>
+<!-- any?は一つでもerrorがあればtrueを返す。==　失敗そた時のみ。以下実行 -->
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(object.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<% if @feed_items.any? %>
+  <ol class="microposts">
+    <%= render @feed_items %>
+    <!-- @feed_itemsとあるが中身の実態はmicropostなので_micropost.html.erbを見に行く。 -->
+  </ol>
+  <%= will_paginate @feed_items %>
+<% end %>

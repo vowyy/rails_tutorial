@@ -1,0 +1,10 @@
+<li>
+  <%= gravatar_for user, size: 50 %>
+  <%= link_to user.name, user %>
+  <!-- (自分がadmin: true) && (current_userがuserでない)ユーザーの横ににdeleteリンクを表示させる. -->
+  <!-- 自分をdeleteしない。 -->
+  <!-- 必ず１人以上のadminを保証する -->
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

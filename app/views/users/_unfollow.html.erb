@@ -1,0 +1,6 @@
+<!-- このフォームはfollowed_idをコントローラに送信する必要があります -->
+
+<!-- DELETE /relationships/:id に送っている。このidにはRelationshipテーブルのレコードが入る。てか入らなければいけない。-->
+<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),  html: { method: :delete }, remote: true) do |f| %>
+  <%= f.submit "Unfollow", class: "btn" %>
+<% end %>

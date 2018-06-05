@@ -1,0 +1,13 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+<!-- <%= will_paginate @users%> 本来はこう書くがuser_controller内のページなので省力できる。-->
+
+<ul class="users">
+  <%= render @users %>
+  <!-- モデルのインスタンスの集合にrenderをやるとそれが(each do end)に変わって、その中のそれぞれのユーザーに対してrenderが走ると_user.html.erbが走る。 -->
+  <!-- render @usersを実行すると、自動的に_user.html.erbパーシャルを参照し、各ユーザーをコレクションとして表示する -->
+</ul>
+
+<%= will_paginate %>
